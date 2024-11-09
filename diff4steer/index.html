@@ -1,0 +1,547 @@
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+      integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto:300,400,900"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link href="style.css" rel="stylesheet" />
+    <script src="helper.js"></script>
+    <title>Diff4Steer</title>
+  </head>
+  <body>
+    <div id="header" class="container-fluid">
+      <div class="row" style="text-align: center">
+        <div class="row">
+          <h1>Diff4Steer Supplementary Materials</h1>
+          <div class="title">Diff4Steer: Steerable Diffusion Prior for Generative Music Retrieval with Semantic Guidance</div>
+          <div class="authors">Anonymous</div>
+          <!-- <div class="assets">
+            <a href="go/arxiv-paper" target="_blank"> [paper] </a>
+          </div> -->
+        </div>
+      </div>
+
+      <div id="overview" class="container">
+        <h2>Overview</h2>
+        <span>
+          <h3>Diff4Steer: Generative Music Retrieval via Steerable Diffusion Prior</h3>
+          Modern music retrieval systems often rely on fixed representations of user preferences, limiting their ability to capture users' diverse and uncertain retrieval needs. To address this limitation, we introduce Diff4Steer, a novel generative retrieval framework that employs lightweight diffusion models to synthesize diverse "oracle" seed embeddings representing potential directions for music exploration. Unlike deterministic methods that map user query to a single point in embedding space, Diff4Steer provides a statistical prior on the target modality (audio) for retrieval, effectively capturing the uncertainty and multi-faceted nature of user preferences. Furthermore, Diff4Steer can be steered by image or text inputs, enabling more flexible and controllable music discovery combined with nearest neighbor search. Our framework outperforms deterministic regression methods and LLM-based generative retrieval baseline in terms of retrieval and ranking metrics, demonstrating its effectiveness in capturing user preferences, leading to more diverse and relevant recommendations. 	  <br /><br />
+          <br />
+	  <img src="figure_1_diff4steer_overview.png" alt=""  class="center">
+	  <br>
+        </span>
+      </div>
+
+      <div id="table-1" class="container">
+        <h2> Image to Music: MelBench Examples</h2>
+        <p>Diff4Steer can find matching music given an image input. For sample images from MelBench, we show that we can generate diverse seed embeddings, which is a vector representation of idealized user preference in the music embedding space. We invert the embedding to music using a embedding-based music generation model, so you can "hear" the embedding. It showcase that Diff4Steer can retrieve diverse music and music genres that match the image. </p>
+
+        <table class="table table-responsive">
+          <thead>
+            <tr class="text-center">
+              <td>Index</td>
+              <!-- <td>Ground truth</td> -->
+              <td>Input Image</td>
+              <td>Generated Audio</td>
+	      <td>Retrieved Audio</td>
+              <td>Groundtruth Genres</td>
+              <!-- <td>V2Meow Flow</td> -->
+            </tr>
+          </thead>
+
+          <tbody id="table-1-page-0">
+            <tr class="pure-table-odd">
+              <td class="text-center">
+                1
+              </td>
+              <td class="text-center">
+                <img src="table1/yEP2YrD-dyY_frame_5.png" alt="Description of Image" style="width: 300px; height: 200px;">
+              </td>
+              <td class="text-center">
+		<audio controls>
+		  <source src="table1/yEP2YrD-dyY_frame_5_seed_0_img_gs_10_0_txt_gs_0_0.wav" type="audio/wav">
+	        </audio>
+    <div class="row">seed 0</div>
+    <!-- <br /><br /> -->
+		<audio controls>
+		  <source src="table1/yEP2YrD-dyY_frame_5_seed_1_img_gs_10_0_txt_gs_0_0.wav" type="audio/wav">
+	        </audio>
+    <div class="row">seed 1</div>      
+              </td>
+	      <td class="text-center">
+		<audio controls>
+		  <source src="table1/yEP2YrD-dyY_frame_5_seed_0_8KGBHWeywjw.wav" type="audio/wav"> <!-- u1V8YRJnr4Q:0_29_39 -->
+	        </audio>
+          <div class="row">Classical, Compositional Ambient</div>
+	        <audio controls>
+		  <source src="table1/yEP2YrD-dyY_frame_5_seed_1_bmatItacEvM.wav" type="audio/wav"> <!-- gx5PVjsRamk:0_47_57 -->
+	        </audio>
+          <div class="row">Electronic, Downtempo</div>
+    <audio controls>
+      <source src="table1/yEP2YrD-dyY_frame_5_seed_0_pRbInltGMaA.wav" type="audio/wav"> <!-- gx5PVjsRamk:0_47_57 -->
+    </audio>
+    <div class="row">Electronic, Electronica</div>
+	      </td>
+    <td class="text-center">
+		<div class="row">New Age,</div>
+		<div class="row">Color Noise</div>
+		<br /><br />
+              </td>
+            </tr>
+
+	  <tr class="pure-table-odd">
+              <td class="text-center">
+                2
+              </td>
+              <td class="text-center">
+		 <img src="table1/CcNo07Xp8aQ_frame_51.png" alt="New Age" style="width: 300px; height: 200px;">
+              </td>
+	      <td class="text-center">
+		<audio controls>
+		  <source src="table1/CcNo07Xp8aQ_frame_51_seed_0_img_gs_10_0_txt_gs_0_0.wav" type="audio/wav">
+	        </audio>
+          <div class="row">seed 0</div> 
+		<audio controls>
+		  <source src="table1/CcNo07Xp8aQ_frame_51_seed_2_img_gs_10_0_txt_gs_0_0.wav" type="audio/wav">
+	        </audio>
+          <div class="row">seed 1</div> 
+              </td>
+	      <td class="text-center">
+		<audio controls>
+		  <source src="table1/CcNo07Xp8aQ_frame_51_seed_0_VphlzQmOJvs.wav" type="audio/wav"> <!-- u1V8YRJnr4Q:0_29_39 -->
+	        </audio>
+          <div class="row">Electronic, Electro House</div>
+	        <audio controls>
+		  <source src="table1/CcNo07Xp8aQ_frame_51_seed_0_BI7XTl0OvuE.wav" type="audio/wav"> <!-- gx5PVjsRamk:0_47_57 -->
+	        </audio>
+          <div class="row">Electronic, Stutter House</div>
+	        <audio controls>
+            <source src="table1/CcNo07Xp8aQ_frame_51_seed_2_ouyC28ffPjQ.wav" type="audio/wav"> <!-- gx5PVjsRamk:0_47_57 -->
+                </audio>
+                <div class="row">Electronic, Brostep</div>
+	      </td>
+              <td class="text-center">
+		<div class="row">Classical,</div>
+		<div class="row">Classical Performance</div>
+		<br /><br />
+              </td>
+          </tr>
+
+		  <tr class="pure-table-odd">
+              <td class="text-center">
+                3
+              </td>
+              <td class="text-center">
+		 <img src="table1/r_oK8dKIBYc_frame_35.png" alt="New Age" style="width: 300px; height: 200px;">
+              </td>
+	      <td class="text-center">
+		<audio controls>
+		  <source src="table1/r_oK8dKIBYc_frame_35_seed_0_img_gs_10_0_txt_gs_0_0.wav" type="audio/wav">
+	        </audio>
+          <div class="row">seed 0</div>
+		<audio controls>
+		  <source src="table1/r_oK8dKIBYc_frame_35_seed_1_img_gs_10_0_txt_gs_0_0.wav" type="audio/wav">
+	        </audio>
+          <div class="row">seed 1</div>
+              </td>
+	      <td class="text-center">
+		<audio controls>
+		  <source src="table1/r_oK8dKIBYc_frame_35_seed_1_O4lzPz3NnI0.wav" type="audio/wav"> <!-- u1V8YRJnr4Q:0_29_39 -->
+	        </audio>
+          <div class="row">Classical, Orchestral Performance</div>
+	        <audio controls>
+		  <source src="table1/r_oK8dKIBYc_frame_35_seed_1_s7w-IeNR9ko.wav" type="audio/wav"> <!-- gx5PVjsRamk:0_47_57 -->
+	        </audio>
+          <div class="row">Classical, Italian orchestra</div>
+          <audio controls>
+            <source src="table1/r_oK8dKIBYc_frame_35_seed_0_NEfmu1JPB9Q.wav" type="audio/wav"> <!-- gx5PVjsRamk:0_47_57 -->
+                </audio>
+                <div class="row">World traditional, Entehno</div>
+	      </td>
+              <td class="text-center">
+                <div class="row">Classical,</div>
+                <div class="row">Classical Performance</div>
+		<br /><br />
+              </td>
+          </tr>
+
+		  		  <tr class="pure-table-odd">
+              <td class="text-center">
+                4
+              </td>
+              <td class="text-center">
+		 <img src="table1/oIIxlgcuQRU_frame_150.png" alt="New Age" style="width: 300px; height: 200px;">
+              </td>
+	      <td class="text-center">
+		<audio controls>
+		  <source src="table1/oIIxlgcuQRU_frame_150_seed_2_img_gs_10_0_txt_gs_0_0.wav" type="audio/wav">
+	        </audio>
+          <div class="row">seed 0</div>
+		<audio controls>
+		  <source src="table1/oIIxlgcuQRU_frame_150_seed_1_img_gs_10_0_txt_gs_0_0.wav" type="audio/wav">
+	        </audio>
+          <div class="row">seed 1</div>
+              </td>
+	      <td class="text-center">
+		<audio controls>
+		  <source src="table1/oIIxlgcuQRU_frame_150_seed_2_t4QK8RxCAwo.wav" type="audio/wav"> <!-- u1V8YRJnr4Q:0_29_39 -->
+	        </audio>
+          <div class="row">Rock, Classic Rock</div>
+	        <audio controls>
+		  <source src="table1/oIIxlgcuQRU_frame_150_seed_2_le1XbVADv9I.wav" type="audio/wav"> <!-- gx5PVjsRamk:0_47_57 -->
+	        </audio>
+          <div class="row">Classical, Neo-Classical</div>
+      <audio controls>
+          <source src="table1/oIIxlgcuQRU_frame_150_seed_1_IZSmX3G-IRk.wav" type="audio/wav">
+        </audio>
+        <div class="row">Latin, Rock En Espanol</div>
+	      </td>
+              <td class="text-center">
+		<div class="row">Rock, Country, Blues</div>
+		<br /><br />
+		<div class="row">Rock, Metal, Country</div>
+
+              </td>
+          </tr>
+
+
+	  </tbody>
+	  </table>
+      </div>
+      <div id="table-2" class="container">
+        <h2> Image + Text to Music</h2>
+
+
+	<p>Diff4Steer allows combining the infulence from image and text, with customizable strength. Here we showcase the generated seed embedding with image style influence can be combined with the music style specified by text, to represent user's preference on combining artistic styles from different modalities.</p>
+
+        <p>
+<!--        </p>-->
+<!--	<p>-->
+<!-- 	</p>-->
+<!--	<p>       -->
+<!--      </p><p>-->
+
+<!--      </p><table class="table table-responsive" style="overflow-x:scroll">-->
+<!--          <thead>-->
+<!--            <tr class="text-center">-->
+<!--              <th>Index</th>-->
+<!--              &lt;!&ndash; <th>Ground truth</th>       &ndash;&gt;-->
+<!--              <th>Input Image Query</th>-->
+<!--	      <th  style="width:200px">Steering Text Prompt</th>-->
+<!--              <th>No Steering</th>-->
+<!--              <th>Steering at 0.04</th>-->
+<!--              <th>Steering at 0.08</th>-->
+<!--              &lt;!&ndash; <th>V2Meow ViT+Flow+MuLan</th> &ndash;&gt;-->
+<!--            </tr>-->
+<!--          </thead>-->
+              <div class="table-responsive">
+    <table class="table">
+      <thead>
+        <tr class="text-center">
+          <th>Index</th>
+          <th>Input Image Query</th>
+          <th>Steering Text Prompt</th>
+          <th>No Steering</th>
+          <th>Steering at 0.04</th>
+          <th>Steering at 0.08</th>
+        </tr>
+      </thead>
+
+          <tbody id="table-2-page-0">
+
+	    <tr class="pure-table-odd">
+              <td class="text-center">
+                1
+              </td>
+              <td class="text-center">
+		<img src="table1/yEP2YrD-dyY_frame_5.png" alt="Description of Image" style="width: 300px; height: 200px;">
+              </td>
+	      <td class="text-center" style="width:1000px">
+               Chill-out
+              </td>
+              <td class="text-center">
+                <audio controls>
+		  <source src="table1/CcNo07Xp8aQ_frame_51_seed_0_img_gs_10_0_txt_gs_none.wav" type="audio/wav"> <!-- u1V8YRJnr4Q:0_29_39 -->
+	        </audio>
+		<div class="row">Environmental, Indie Folk, Ocean </div>
+              </td>
+              <td class="text-center">
+                 <audio controls>
+		  <source src="table1/CcNo07Xp8aQ_frame_51_seed_0_img_gs_10_0_txt_gs_0_04.wav" type="audio/wav"> <!-- u1V8YRJnr4Q:0_29_39 -->
+	         </audio>
+		 <div class="row">Downtempo, Ocean, Indie Folk </div>
+              </td>
+              <td class="text-center">
+                 <audio controls>
+		  <source src="table1/CcNo07Xp8aQ_frame_51_seed_0_img_gs_10_0_txt_gs_0_06.wav" type="audio/wav"> <!-- u1V8YRJnr4Q:0_29_39 -->
+	         </audio>
+		 <div class="row">Downtempo, Indietronica, Compositional Ambient </div>
+              </td>
+            </tr>
+
+	    <tr class="pure-table-odd">
+              <td class="text-center">
+                1
+              </td>
+              <td class="text-center">
+		<img src="table1/yQjHSIHPJfw_frame_30.png" alt="Description of Image" style="width: 300px; height: 200px;">
+              </td>
+	      <td class="text-center" style="width:1000px">
+               Chill-out
+              </td>
+              <td class="text-center">
+                <audio controls>
+		  <source src="table2/yQjHSIHPJfw_0_25_35_1_img_gs_10_0_txt_gs_0_00.wav" type="audio/wav"> <!-- u1V8YRJnr4Q:0_29_39 -->
+	        </audio>
+		<div class="row">Environmental, Movie Tunes, Filmi</div>
+              </td>
+              <td class="text-center">
+                 <audio controls>
+		  <source src="table2/yQjHSIHPJfw_0_25_35_1_img_gs_10_0_txt_gs_0_04.wav" type="audio/wav"> <!-- u1V8YRJnr4Q:0_29_39 -->
+	         </audio>
+		 <div class="row">Environmental,Sleep,Healing Hz</div>
+              </td>
+              <td class="text-center">
+                 <audio controls>
+		  <source src="table2/yQjHSIHPJfw_0_25_35_1_img_gs_10_0_txt_gs_0_08.wav" type="audio/wav"> <!-- u1V8YRJnr4Q:0_29_39 -->
+	         </audio>
+		 <div class="row"> Sleep, Downtempo, Environmental</div>
+              </td>
+            </tr>
+
+	  </tbody>
+	</table>
+	</div>
+
+<div id="table-3" class="container">
+
+  <h2>Manipulate Seed Embedding with Positive Text Steering</h2>
+  <span>
+    Here we show we can apply positive steering to the generated seed embedding. We use a embedding-based music generation model to "invert" the seed embedding for listening.
+    <br /><br />
+    </span>
+  <table class="table table-responsive">
+           <thead>
+            <tr class="text-center">
+              <th>Input Text Query</th>
+              <th>Steering Prompt</th>
+	       <th>Seed Before Steering</th>
+              <th>Seed After Steering</th>
+              <!-- <th>V2Meow ViT+Flow+MuLan</th> -->
+            </tr>
+          </thead>
+    <tbody id="table-3-page-0">
+
+      <tr class="pure-table-odd">
+	<td>Unwind to the soothing sounds of cool jazz as the smooth melodies of the saxophone glide effortlessly over the gentle accompaniment of piano and double bass, creating an atmosphere of relaxation and tranquility.</td>
+	<td>Energetic,upbeat (Positive)</td>
+        <td class="text-center">
+	  <audio controls>
+            <source src="table3/jazz_cool_jazz_saxophone_piano_double_bass_calming_img_gs_0_60_energeticupbeat_txt_gs_pos_0_00_seed_4.wav" type="audio/wav">
+          </audio>
+        </td>
+        <td class="text-center">
+	  <audio controls>
+            <source src="table3/jazz_cool_jazz_saxophone_piano_double_bass_calming_img_gs_0_60_energeticupbeat_txt_gs_pos_0_06_seed_4.wav" type="audio/wav">
+          </audio>
+        </td>
+      </tr>
+
+      <tr class="pure-table-odd">
+	<td>Drift into a dreamy reverie with the ethereal sounds of dream pop as the shimmering synths of the synthesizer blend with the hazy strumming of guitar and the hypnotic beats of the drum machine, lulling you into a state of blissful calm.</td>
+	<td>Energetic,upbeat (Positive)</td>
+        <td class="text-center">
+	  <audio controls>
+            <source src="table3/pop_dream_pop_synthesizer_guitar_drum_machine_calming_img_gs_0_80_energeticupbeat_txt_gs_pos_0_00_seed_2.wav" type="audio/wav">
+          </audio>
+        </td>
+        <td class="text-center">
+	  <audio controls>
+            <source src="table3/pop_dream_pop_synthesizer_guitar_drum_machine_calming_img_gs_0_80_energeticupbeat_txt_gs_pos_0_10_seed_2.wav" type="audio/wav">
+          </audio>
+        </td>
+      </tr>
+
+
+
+      <tr class="pure-table-odd">
+	<td>Take a leisurely stroll through the rolling hills of Western folk country as the plaintive cries of the pedal steel guitar blend with the sweet melodies of mandolin and banjo, evoking a sense of calm and tranquility that's as wide as the open prairie.</td>
+	<td>Techno (Positive)</td>
+        <td class="text-center">
+	  <audio controls>
+            <source src="table3/country_western_folk_pedal_steel_guitar_mandolin_banjo_relaxing_img_gs_0_60_techno_txt_gs_pos_0_00_seed_0.wav" type="audio/wav">
+          </audio>
+        </td>
+        <td class="text-center">
+	  <audio controls>
+            <source src="table3/country_western_folk_pedal_steel_guitar_mandolin_banjo_relaxing_img_gs_0_60_techno_txt_gs_pos_0_10_seed_0.wav" type="audio/wav">
+          </audio>
+        </td>
+      </tr>
+
+       <tr class="pure-table-odd">
+	<td>Ease into the mellow vibes of soft rock as the gentle strumming of the acoustic guitar blends with the soothing tones of keyboard and the subtle rhythms of the drum kit, enveloping you in a warm blanket of relaxation and comfort.</td>
+	<td>Techno (Positive)</td>
+        <td class="text-center">
+	  <audio controls>
+            <source src="table3/rock_soft_rock_acoustic_guitar_keyboard_drum_kit_relaxing_img_gs_0_80_techno_txt_gs_pos_0_00_seed_3.wav" type="audio/wav">
+          </audio>
+        </td>
+        <td class="text-center">
+	  <audio controls>
+            <source src="table3/rock_soft_rock_acoustic_guitar_keyboard_drum_kit_relaxing_img_gs_0_80_techno_txt_gs_pos_0_10_seed_3.wav" type="audio/wav">
+          </audio>
+        </td>
+       </tr>
+
+
+     </tbody>
+  </table>
+</div>
+
+
+
+<div id="table-4" class="container">
+
+  <h2>Manipulate Seed Embedding with Negative Text Steering</h2>
+  <span>
+    Here we show we can apply negative steering to the generated seed embedding. We use a embedding-based music generation model to "invert" the seed embedding for listening.
+    <br /><br />
+    </span>
+  <table class="table table-responsive">
+           <thead>
+            <tr class="text-center">
+              <th>Input Text Query</th>
+              <th>Steering Prompt</th>
+	       <th>Seed Before Steering</th>
+              <th>Seed After Steering</th>
+              <!-- <th>V2Meow ViT+Flow+MuLan</th> -->
+            </tr>
+          </thead>
+    <tbody id="table-3-page-0">
+
+      <tr class="pure-table-odd">
+	<td>Take a leisurely stroll through the rolling hills of Western folk country as the plaintive cries of the pedal steel guitar blend with the sweet melodies of mandolin and banjo, evoking a sense of calm and tranquility that's as wide as the open prairie.</td>
+	<td>Relaxing (Negative)</td>
+        <td class="text-center">
+	  <audio controls>
+            <source src="table4/country_western_folk_pedal_steel_guitar_mandolin_banjo_relaxing_img_gs_0_80_relaxing_txt_gs_neg_0_00_seed_0.wav" type="audio/wav">
+          </audio>
+        </td>
+        <td class="text-center">
+	  <audio controls>
+            <source src="table4/country_western_folk_pedal_steel_guitar_mandolin_banjo_relaxing_img_gs_0_80_relaxing_txt_gs_neg_0_08_seed_0.wav" type="audio/wav">
+          </audio>
+        </td>
+      </tr>
+
+             <tr class="pure-table-odd">
+	<td>Drift away on a sea of tranquility with the ambient sounds of electronic music as the ethereal tones of synthesizer mingle with the atmospheric pads and electronic beats, creating a serene sonic landscape that soothes the mind and calms the soul.</td>
+	<td>Calming (Negative)</td>
+        <td class="text-center">
+	  <audio controls>
+            <source src="table4/electronic_ambient_synthesizer_atmospheric_pads_electronic_beats_calming_img_gs_0_70_calming_txt_gs_neg_0_00_seed_0.wav" type="audio/wav">
+          </audio>
+        </td>
+        <td class="text-center">
+	  <audio controls>
+            <source src="table4/electronic_ambient_synthesizer_atmospheric_pads_electronic_beats_calming_img_gs_0_70_calming_txt_gs_neg_0_10_seed_0.wav" type="audio/wav">
+          </audio>
+        </td>
+	     </tr>
+
+             <tr class="pure-table-odd">
+	<td>Let the gentle melodies of acoustic folk wash over you as the soulful strains of the violin intertwine with the tender chords of acoustic guitar and the rich harmonies of cello, creating a sense of serenity and contentment.</td>
+	<td>Relaxing (Negative)</td>
+        <td class="text-center">
+	  <audio controls>
+            <source src="table4/folk_acoustic_folk_violin_acoustic_guitar_cello_relaxing_img_gs_0_80_relaxing_txt_gs_neg_0_00_seed_2.wav" type="audio/wav">
+          </audio>
+        </td>
+        <td class="text-center">
+	  <audio controls>
+            <source src="table4/folk_acoustic_folk_violin_acoustic_guitar_cello_relaxing_img_gs_0_80_relaxing_txt_gs_neg_0_08_seed_2.wav" type="audio/wav">
+          </audio>
+        </td>
+	     </tr>
+
+	                  <tr class="pure-table-odd">
+	<td>Drift away on a sea of tranquility with the ambient sounds of electronic music as the ethereal tones of synthesizer mingle with the atmospheric pads and electronic beats, creating a serene sonic landscape that soothes the mind and calms the soul.</td>
+	<td>Calming (Negative)</td>
+        <td class="text-center">
+	  <audio controls>
+            <source src="table4/electronic_ambient_synthesizer_atmospheric_pads_electronic_beats_calming_img_gs_0_70_calming_txt_gs_neg_0_00_seed_3.wav" type="audio/wav">
+          </audio>
+        </td>
+        <td class="text-center">
+	  <audio controls>
+            <source src="table4/electronic_ambient_synthesizer_atmospheric_pads_electronic_beats_calming_img_gs_0_70_calming_txt_gs_neg_0_10_seed_3.wav" type="audio/wav">
+          </audio>
+        </td>
+	     </tr>
+
+
+     </tbody>
+  </table>
+
+<!--
+<div id="table-0" class="container">
+<h2>Multiple Concepts Steering</h2>
+  <span>
+    Diff4Steer support multiple concepts steering. Here are some examples of two concepts + three concepts steering.
+    <br /><br />
+    </span>
+  <table class="table table-responsive">
+    <tbody id="table-3-page-0">
+      <tr class="pure-table-odd">
+        <td class="text-center">
+          <video width="100%" height="auto" controls>
+            <source src="table3/table3_row1_col1.mp4" type="video/mp4">
+          </video>
+        </td>
+
+      </tr>
+      </tr>
+      <tr class="pure-table-odd">
+        <td class="text-center">
+          <video width="100%" height="auto" controls>
+            <source src="table3/table3_row3_col1.mp4" type="video/mp4">
+          </video>
+        </td>
+      </tr>
+      </tr>
+      <tr class="pure-table-odd">
+        <td class="text-center">
+          <video width="100%" height="auto" controls>
+            <source src="table3/table3_row4_col1.mp4" type="video/mp4">
+          </video>
+        </td>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+-->
+<!--
+      <script>
+        includeHTML();
+      </script>
+
+          <div class="container">
+      <h2>Limitation</h2>
+      <span>
+        <br /><br />
+      </span>
+    </div>
+-->
+
+  </body>
+</html>
